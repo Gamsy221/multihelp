@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplication Test Replica</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="app-header no-print">
+      <div>
+        <p class="eyebrow">Printable Practice Sheet</p>
+        <h1>Multiplication Test Replica</h1>
+        <p class="intro">Twelve groups, twelve problems each, laid out to feel like the real test.</p>
+      </div>
+      <div class="actions">
+        <button id="generate-button" type="button">Generate New Test</button>
+        <button id="print-button" type="button">Print</button>
+      </div>
+    </header>
+
+    <main id="worksheet" class="worksheet" aria-label="Multiplication worksheet"></main>
+  </div>
+
+  <template id="group-template">
+    <section class="times-group">
+      <div class="group-label"></div>
+      <div class="problem-grid"></div>
+    </section>
+  </template>
+
+  <template id="problem-template">
+    <article class="problem" aria-label="Multiplication problem">
+      <div class="problem-stack">
+        <div class="factor factor-top"></div>
+        <div class="factor factor-bottom">
+          <span class="operator">x</span>
+          <span class="factor-value"></span>
+        </div>
+        <div class="answer-bar" aria-hidden="true"></div>
+        <div class="answer-space" aria-hidden="true"></div>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
