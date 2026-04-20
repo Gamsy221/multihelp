@@ -8,11 +8,11 @@
 </head>
 <body>
   <div class="page-shell">
-    <header class="app-header no-print">
+    <header class="app-header">
       <div>
-        <p class="eyebrow">Printable Practice Sheet</p>
+        <p class="eyebrow">Interactive Practice Test</p>
         <h1>Multiplication Test Replica</h1>
-        <p class="intro">Twelve groups, twelve problems each, laid out to feel like the real test.</p>
+        <p class="intro">Work through each times-table section one at a time, race the timer, and see how many groups you can finish perfectly.</p>
       </div>
       <div class="actions">
         <button id="generate-button" type="button">Generate New Test</button>
@@ -20,12 +20,33 @@
       </div>
     </header>
 
+    <section id="overall-results" class="overall-results hidden" aria-live="polite">
+      <h2>Final Score</h2>
+      <p id="overall-problems" class="overall-score"></p>
+      <p id="overall-groups" class="overall-score"></p>
+    </section>
+
     <main id="worksheet" class="worksheet" aria-label="Multiplication worksheet"></main>
   </div>
 
   <template id="group-template">
-    <section class="times-group">
-      <div class="group-label"></div>
+    <section class="times-group" data-state="locked">
+      <div class="group-header">
+        <div>
+          <div class="group-label"></div>
+          <p class="group-note">Start the timer to unlock this section.</p>
+        </div>
+        <div class="group-status">
+          <span class="status-pill">Locked</span>
+          <span class="section-check hidden" aria-hidden="true">&#10003;</span>
+        </div>
+      </div>
+      <div class="group-controls">
+        <span class="timer-display" aria-live="polite">1:25</span>
+        <button class="start-button" type="button">Start Timer</button>
+        <button class="finish-button hidden" type="button">Check/Finish</button>
+      </div>
+      <div class="group-feedback" aria-live="polite"></div>
       <div class="problem-grid"></div>
     </section>
   </template>
@@ -39,7 +60,10 @@
           <span class="factor-value"></span>
         </div>
         <div class="answer-bar" aria-hidden="true"></div>
-        <div class="answer-space" aria-hidden="true"></div>
+        <label class="answer-field">
+          <span class="sr-only">Answer</span>
+          <input class="answer-input" type="text" inputmode="numeric" autocomplete="off" disabled>
+        </label>
       </div>
     </article>
   </template>
